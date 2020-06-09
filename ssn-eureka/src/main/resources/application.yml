@@ -1,21 +1,21 @@
-#spring:
-#  application:
-#    name: ad-eureka
-#
-#server:
-#  port: 8000
-#
-#eureka:
-#  instance:
-#    hostname: localhost
-#  client:
-##    是否发现其他euraka节点，获得其他节点server的注册信息
-#    fetch-registry: false
-##    本身是否注册，但节点不需要
-#    register-with-eureka: false
-##    指定一个默认的地址 设置eureka地址，查询注册服务都需要这个
-#    service-url:
-#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+spring:
+  application:
+    name: ad-eureka
+
+server:
+  port: 8000
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+#    是否发现其他euraka节点，获得其他节点server的注册信息
+    fetch-registry: false
+#    本身是否注册，但节点不需要
+    register-with-eureka: false
+#    指定一个默认的地址 设置eureka地址，查询注册服务都需要这个
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
 
 ---

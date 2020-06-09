@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>ssn-eureka</module>
+        <module>ad-gateway</module>
     </modules>
 
     <name>ssn-ad-spring-cloud</name>
