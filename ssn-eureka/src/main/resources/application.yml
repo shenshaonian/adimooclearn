@@ -1,18 +1,68 @@
+#spring:
+#  application:
+#    name: ad-eureka
+#
+#server:
+#  port: 8000
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+##    是否发现其他euraka节点，获得其他节点server的注册信息
+#    fetch-registry: false
+##    本身是否注册，但节点不需要
+#    register-with-eureka: false
+##    指定一个默认的地址 设置eureka地址，查询注册服务都需要这个
+#    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+---
 spring:
   application:
     name: ad-eureka
-
+  profiles: server1
 server:
   port: 8000
-
 eureka:
   instance:
-    hostname: localhost
+    hostname: server1
+#    是否使用ip地址去配置注册，默认false，单节点，不需要这个
+    prefer-ip-address: false
   client:
-#    是否发现其他euraka节点，获得其他节点server的注册信息
-    fetch-registry: false
-#    本身是否注册，但节点不需要
-    register-with-eureka: false
-#    指定一个默认的地址 设置eureka地址，查询注册服务都需要这个
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#      需要向其他节点去注册
+      defaultZone: http://server2:8001/eureka/,http://server3:8002/eureka/
+
+---
+spring:
+  application:
+    name: ad-eureka
+  profiles: server2
+server:
+  port: 8001
+eureka:
+  instance:
+    hostname: server2
+    #    是否使用ip地址去配置注册，默认false，单节点，不需要这个
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://server1:8000/eureka/,http://server3:8002/eureka/
+
+---
+spring:
+  application:
+    name: ad-eureka
+  profiles: server3
+server:
+  port: 8002
+eureka:
+  instance:
+    hostname: server3
+    #    是否使用ip地址去配置注册，默认false，单节点，不需要这个
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://server2:8001/eureka/,http://server1:8000/eureka/
