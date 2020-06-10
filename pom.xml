@@ -11,6 +11,7 @@
     <modules>
         <module>ssn-eureka</module>
         <module>ad-gateway</module>
+        <module>ssn-ad-service</module>
     </modules>
 
     <name>ssn-ad-spring-cloud</name>
